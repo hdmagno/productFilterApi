@@ -22,11 +22,11 @@ namespace api.presentation.Controllers
         }
 
         [HttpGet]
-        public IActionResult BackEnd([FromQuery] ProductFilter filter)
+        public IActionResult GetAll([FromQuery] ProductFilter filter)
         {
             try
             {
-                var entity = _repository.Query(filter);
+                var entity = _repository.SelectAll(filter);
 
                 var result = _mapper.Map<IEnumerable<ResponseProductViewModel>>(entity);
 

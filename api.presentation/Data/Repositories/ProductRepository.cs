@@ -16,12 +16,7 @@ namespace api.presentation.Data.Repositories
             _context = context;
         }
 
-        public DbSet<Product> All()
-        {
-            return _context.Products;
-        }
-
-        public IEnumerable<Product> Query(ProductFilter filter)
+        public IEnumerable<Product> SelectAll(ProductFilter filter)
         {
             try
             {
