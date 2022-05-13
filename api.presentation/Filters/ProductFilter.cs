@@ -1,6 +1,4 @@
-using api.presentation.Models;
-
-namespace api.presentation.Filter
+namespace api.presentation.Filters
 {
     public class ProductFilter : BaseFilter
     {

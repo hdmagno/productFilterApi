@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using api.presentation.Data.Repositories;
-using api.presentation.Filter;
+using api.presentation.Filters;
 using api.presentation.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
