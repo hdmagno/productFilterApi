@@ -18,25 +18,33 @@ namespace api.presentation.Filters
 
         private int SkipSize => (Page - 1) * PageSize;
 
-        public int TotalPages => (int)Math.Ceiling(TotalCount / (decimal)PageSize);
+        private int _totalPages => (int)Math.Ceiling(_totalCount / (decimal)PageSize);
+        public int GetTotalPages() 
+            => _totalPages;
 
-        public int TotalCount { get; set; }
+        private int _totalCount = 0;
+        public int GetTotalCount()
+            => _totalCount;
 
-        public bool HasPrevious => Page > 1;
+        private bool _hasPrevious => Page > 1;
+        public bool GetHasPrevious()
+            => _hasPrevious;
 
-        public bool HasNext => Page < TotalPages;
+        private bool _hasNext => Page < _totalPages;
+        public bool GetHasNext()
+            => _hasNext;
 
         public bool Paginated { get; set; } = true;
 
         public string OrderBy { get; set; }
 
         public string OrderDirection { get; set; }
-        
+
         public IQueryable<T> Paginate<T>(IQueryable<T> query)
         {
             if (Paginated)
             {
-                TotalCount = query.Count();
+                _totalCount = query.Count();
                 AdjustPageNumber();
                 return query.Skip(SkipSize).Take(PageSize);
             }
@@ -48,7 +56,7 @@ namespace api.presentation.Filters
 
         public void AdjustPageNumber()
         {
-            Page = Page > TotalPages ? Math.Max(TotalPages, 1) : Page;
+            Page = Page > _totalPages ? _totalPages : Page < 1 ? 1 : Page;
         }
     }
 

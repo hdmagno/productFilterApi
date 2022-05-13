@@ -43,10 +43,10 @@ namespace api.presentation.Controllers
                     {
                         page = filter.Page,
                         pageSize = filter.PageSize,
-                        totalPages = filter.TotalPages,
-                        totalCount = filter.TotalCount,
-                        hasPrevious = filter.HasPrevious,
-                        hasNext = filter.HasNext
+                        totalPages = filter.GetTotalPages(),
+                        totalCount = filter.GetTotalCount(),
+                        hasPrevious = filter.GetHasPrevious(),
+                        hasNext = filter.GetHasNext()
                     }
                 });
             }
