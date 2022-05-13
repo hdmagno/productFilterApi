@@ -35,8 +35,6 @@ namespace api.presentation.Models
 
         public string OrderDirection { get; set; }
         
-        public string Search { get; set; }
-
         public IQueryable<T> Paginate<T>(IQueryable<T> query)
         {
             if (Paginated)

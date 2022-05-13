@@ -47,7 +47,7 @@ namespace api.presentation.Data.Repositories
         {
             if (!string.IsNullOrEmpty(filter.Title))
             {
-                query = query.Where(x => x.Title.Contains(filter.Search));
+                query = query.Where(x => x.Title.Contains(filter.Title));
 
                 return query;
             }
