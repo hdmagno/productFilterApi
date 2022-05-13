@@ -44,6 +44,14 @@ namespace api.presentation.Data.Repositories
 
         public IQueryable<Product> FilterFunction(IQueryable<Product> query, ProductFilter filter)
         {
+            if (!string.IsNullOrEmpty(filter.Title) && filter.Price > 0)
+            {
+                query = query.Where(x => x.Title.Contains(filter.Title)
+                    && x.Price == filter.Price);
+                
+                return query;
+            }
+            
             if (!string.IsNullOrEmpty(filter.Title))
             {
                 query = query.Where(x => x.Title.Contains(filter.Title));
