@@ -21,13 +21,7 @@ namespace api.presentation.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("frontend")]
-        public IActionResult FrontEnd()
-        {
-            return Ok(_repository.All());
-        }
-
-        [HttpGet("backend")]
+        [HttpGet]
         public IActionResult BackEnd([FromQuery] ProductFilter filter)
         {
             try
